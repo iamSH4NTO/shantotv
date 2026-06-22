@@ -196,61 +196,12 @@
     }
 
     /* Call To Action Area */
-    .download-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-glow);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: 24px;
-      padding: 2.25rem;
+    .download-container {
       width: 100%;
-      max-width: 500px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.4s, box-shadow 0.4s;
-    }
-
-    .download-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-orange));
-    }
-
-    .download-card:hover {
-      border-color: rgba(255, 123, 0, 0.3);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 123, 0, 0.05);
-    }
-
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .meta-item {
+      max-width: 440px;
       display: flex;
       flex-direction: column;
-    }
-
-    .meta-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 4px;
-    }
-
-    .meta-val {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
+      gap: 12px;
     }
 
     .btn-download {
@@ -259,21 +210,22 @@
       justify-content: center;
       gap: 12px;
       width: 100%;
-      padding: 18px 24px;
-      border-radius: 16px;
+      padding: 16px 28px;
+      border-radius: 14px;
       background: linear-gradient(135deg, var(--accent-blue), #0088cc);
       color: #fff;
       font-family: var(--font-display);
       font-weight: 800;
       font-size: 1.1rem;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 10px 25px rgba(0, 191, 255, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+      box-shadow: 0 8px 20px rgba(0, 191, 255, 0.25);
     }
 
     .btn-download:hover {
       transform: translateY(-2px);
-      box-shadow: 0 15px 30px rgba(0, 191, 255, 0.45);
+      box-shadow: 0 12px 28px rgba(0, 191, 255, 0.4);
+      filter: brightness(1.05);
     }
 
     .btn-download:active {
@@ -281,8 +233,8 @@
     }
 
     .btn-download svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       transition: transform 0.3s ease;
     }
 
@@ -290,20 +242,18 @@
       transform: translateY(2px);
     }
 
-    .warning-install {
-      margin-top: 1.25rem;
+    .download-meta {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
+      font-weight: 500;
     }
 
-    .warning-install svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-      color: var(--accent-orange);
+    .download-meta .meta-dot {
+      color: rgba(255, 255, 255, 0.2);
     }
 
     /* Phone Mockup Screen */
@@ -786,18 +736,23 @@
     @media (max-width: 968px) {
       .hero-section {
         grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 2rem 0 4rem;
+        gap: 2rem;
+        padding: 1.5rem 0 3rem;
       }
       .hero-content {
         align-items: center;
         text-align: center;
       }
+      h1 {
+        margin-bottom: 1rem !important;
+      }
       .description {
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 1.75rem !important;
+        font-size: 1rem;
       }
-      .download-card {
+      .download-container {
         margin: 0 auto;
       }
     }
@@ -833,23 +788,8 @@
         
         <p class="description">Stream live Football matches, Cricket series, Motorsport events, and various TV channels. Free app with no subscription fees, registration, or advertisement interruptions.</p>
         
-        <!-- Download Glass Box -->
-        <div class="download-card">
-          <div class="meta-grid">
-            <div class="meta-item">
-              <span class="meta-label">Version</span>
-              <span class="meta-val">v2.1</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">File Size</span>
-              <span class="meta-val">12 MB</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">Android OS</span>
-              <span class="meta-val">5.0+</span>
-            </div>
-          </div>
-          
+        <!-- Simple & Sleek Download Area -->
+        <div class="download-container">
           <a href="./SHANTO_TV.apk" class="btn-download" download="SHANTO_TV.apk">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -858,14 +798,12 @@
             </svg>
             Download Shanto TV APK
           </a>
-          
-          <div class="warning-install">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-              <line x1="12" y1="9" x2="12" y2="13"/>
-              <line x1="12" y1="17" x2="12.01" y2="17"/>
-            </svg>
-            Enable "Unknown Sources" in settings to install.
+          <div class="download-meta">
+            <span>Version v2.1</span>
+            <span class="meta-dot">&bull;</span>
+            <span>Size 12 MB</span>
+            <span class="meta-dot">&bull;</span>
+            <span>Android 5.0+</span>
           </div>
         </div>
       </div>
