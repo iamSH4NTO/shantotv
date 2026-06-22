@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shanto TV - Live Sports Streaming</title>
+  <meta name="description" content="Download Shanto TV for Android - Free Live Sports TV App. No registration or subscription required. Watch Live Football, Cricket, and more in HD.">
+  <meta name="theme-color" content="#060814">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shanto TV - Live Sports Streaming">
+  <meta property="og:description" content="Free Android app to stream cricket, football, basketball and more. No sign up, no subscription.">
+  <meta property="og:type" content="website">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #05070f;
+      --bg-card: rgba(13, 17, 33, 0.7);
+      --border-glow: rgba(0, 191, 255, 0.15);
+      --accent-blue: #00bfff;
+      --accent-orange: #ff7b00;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --font-display: 'Outfit', system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    /* Background glow effect */
+    .bg-glow {
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(0, 191, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 123, 0, 0.08) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-svg {
+      width: 42px;
+      height: 42px;
+      filter: drop-shadow(0 0 8px rgba(0, 191, 255, 0.4));
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+
+    .brand-name span {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-blue);
+    }
+
+    /* Main Grid */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 3rem 0 6rem;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 191, 255, 0.08);
+      border: 1px solid rgba(0, 191, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; transform: scale(1.15); }
+      100% { opacity: 0.4; }
+    }
+
+    .status-text {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-blue);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5.5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span.gradient-text-blue {
+      background: linear-gradient(to right, #00d2ff, #007bff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h1 span.gradient-text-orange {
+      background: linear-gradient(to right, #ffae00, #ff5100);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+    }
+
+    /* Call To Action Area */
+    .download-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 2.25rem;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.4s, box-shadow 0.4s;
+    }
+
+    .download-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-orange));
+    }
+
+    .download-card:hover {
+      border-color: rgba(255, 123, 0, 0.3);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 123, 0, 0.05);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .meta-val {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .btn-download {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 18px 24px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--accent-blue), #0088cc);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 25px rgba(0, 191, 255, 0.3);
+    }
+
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(0, 191, 255, 0.45);
+    }
+
+    .btn-download:active {
+      transform: translateY(0);
+    }
+
+    .btn-download svg {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-download:hover svg {
+      transform: translateY(2px);
+    }
+
+    .warning-install {
+      margin-top: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .warning-install svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: var(--accent-orange);
+    }
+
+    /* Phone Mockup Screen */
+    .mockup-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+    }
+
+    .phone-mockup {
+      width: 320px;
+      height: 640px;
+      border-radius: 40px;
+      background: #000;
+      border: 8px solid #1a1e29;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 191, 255, 0.15);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-body);
+    }
+
+    /* Screen inner notch */
+    .phone-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 20px;
+      background: #1a1e29;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-notch-dot {
+      width: 6px;
+      height: 6px;
+      background: #333;
+      border-radius: 50%;
+    }
+
+    /* Phone Content Frame */
+    .phone-screen {
+      flex: 1;
+      background: #080b11;
+      display: flex;
+      flex-direction: column;
+      padding-top: 24px; /* offset for notch */
+      color: #fff;
+      font-size: 13px;
+      overflow: hidden;
+    }
+
+    /* App Header */
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .app-header-left, .app-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .app-header svg {
+      width: 20px;
+      height: 20px;
+      color: #cbd5e1;
+      cursor: pointer;
+    }
+
+    .app-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* App Category Chips */
+    .category-chips {
+      display: flex;
+      gap: 10px;
+      padding: 12px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .category-chips::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #141824;
+      border: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, border-color 0.2s;
+      position: relative;
+    }
+
+    .chip.active {
+      background: #1c2234;
+      border-color: var(--accent-orange);
+    }
+
+    .chip-icon {
+      font-size: 14px;
+    }
+
+    .chip-badge {
+      font-size: 9px;
+      font-weight: 700;
+      background: var(--accent-orange);
+      color: #fff;
+      padding: 1px 5px;
+      border-radius: 10px;
+      min-width: 14px;
+      text-align: center;
+    }
+
+    .chip.active::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 1px solid var(--accent-orange);
+      border-radius: 22px;
+      pointer-events: none;
+    }
+
+    /* Match List */
+    .match-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .match-card {
+      background: #101420;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 12px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .match-card.hot::after {
+      content: 'Hot';
+      position: absolute;
+      top: 10px;
+      right: -25px;
+      background: #ef4444;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 25px;
+      transform: rotate(45deg);
+      text-transform: uppercase;
+    }
+
+    .match-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .match-meta-icon {
+      font-size: 11px;
+    }
+
+    .match-teams-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .team-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .team-flag-container {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #161c2d;
+    }
+
+    .team-flag-container svg {
+      width: 44px;
+      height: 44px;
+    }
+
+    .team-name {
+      font-size: 11px;
+      font-weight: 600;
+      max-width: 80px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .vs-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .vs-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-orange);
+      margin-bottom: 2px;
+    }
+
+    .vs-time {
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .vs-date {
+      font-size: 9px;
+      color: var(--text-muted);
+    }
+
+    .match-countdown {
+      text-align: center;
+      font-size: 10px;
+      color: #fb923c;
+      font-weight: 500;
+      background: rgba(251, 146, 60, 0.08);
+      padding: 4px;
+      border-radius: 8px;
+    }
+
+    /* App Bottom Navigation */
+    .app-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: #080b11;
+      text-align: center;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .nav-item.active {
+      color: var(--accent-orange);
+    }
+
+    .nav-item svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav-item-label {
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    /* Features Grid */
+    .features-section {
+      padding: 6rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      text-align: center;
+      font-size: 2.25rem;
+      font-weight: 900;
+      margin-bottom: 3.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 191, 255, 0.3);
+    }
+
+    .feature-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(0, 191, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-blue);
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-icon-wrapper svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 0 0 6rem 0;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-question svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-question svg {
+      transform: rotate(180deg);
+      color: var(--accent-blue);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s;
+      padding: 0 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-top: 1px solid transparent;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding: 1.25rem 1.5rem 1.5rem;
+      border-top-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .faq-answer ol {
+      padding-left: 1.25rem;
+      margin-top: 8px;
+    }
+
+    .faq-answer li {
+      margin-bottom: 6px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-orange);
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      color: #4b5563;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 2rem 0 4rem;
+      }
+      .hero-content {
+        align-items: center;
+        text-align: center;
+      }
+      .description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .download-card {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+
+  <div class="container">
+    
+    <!-- Top Nav -->
+    <header>
+      <a href="#" class="logo-container">
+        <!-- Using original logo asset -->
+        <img class="logo-img" src="asset/logo.jpg" alt="Shanto TV Logo" style="width: 46px; height: 46px; border-radius: 10px; box-shadow: 0 0 12px rgba(0, 191, 255, 0.3);">
+        <span class="brand-name">SHANTO <span>TV</span></span>
+      </a>
+      <a href="https://shanto.top" class="nav-link" target="_blank">shanto.top</a>
+    </header>
+
+    <!-- Main Banner / Hero Section -->
+    <main class="hero-section">
+      
+      <!-- Left Info -->
+      <div class="hero-content">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span class="status-text">Live Streaming Active</span>
+        </div>
+        
+        <h1>Watch <span class="gradient-text-blue">Live Sports</span><br>On Your <span class="gradient-text-orange">Android</span></h1>
+        
+        <p class="description">Stream live Football matches, Cricket series, Motorsport events, and various TV channels. Free app with no subscription fees, registration, or advertisement interruptions.</p>
+        
+        <!-- Download Glass Box -->
+        <div class="download-card">
+          <div class="meta-grid">
+            <div class="meta-item">
+              <span class="meta-label">Version</span>
+              <span class="meta-val">v2.1</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">File Size</span>
+              <span class="meta-val">12 MB</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Android OS</span>
+              <span class="meta-val">5.0+</span>
+            </div>
+          </div>
+          
+          <a href="./SHANTO_TV.apk" class="btn-download" download="SHANTO_TV.apk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download Shanto TV APK
+          </a>
+          
+          <div class="warning-install">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            Enable "Unknown Sources" in settings to install.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Phone Mockup with app screenshot -->
+      <div class="mockup-container">
+        <div class="phone-mockup">
+          <div class="phone-notch">
+            <div class="phone-notch-dot"></div>
+          </div>
+          
+          <div class="phone-screen" style="padding-top: 0;">
+            <img src="asset/app.jpeg" alt="Shanto TV App Screenshot" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Key App Features -->
+    <section class="features-section" id="features">
+      <h2 class="section-title">Why choose <span>Shanto TV</span>?</h2>
+      
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 7l-7 5 7 5V7z"/>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+            </svg>
+          </div>
+          <h3>Multi-Sport Coverage</h3>
+          <p>Instantly switch between major events: Football, Cricket, Basketball, Formula 1, Tennis, and combat sports leagues.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="23 7 16 12 23 17 23 7"/>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+            </svg>
+          </div>
+          <h3>Adaptive Full HD Streams</h3>
+          <p>Stream quality dynamically adjusts based on your internet connection (3G, 4G, 5G, or Wi-Fi) to ensure smooth playback without buffering.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <h3>Zero Setup Required</h3>
+          <p>Skip the registration, email verification, and credit card setup. Just open the app and instantly start watching.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+          </div>
+          <h3>Universal Android Support</h3>
+          <p>Fully optimized interface for mobile smartphones, tablet screens, and Android-based Smart TV boxes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation FAQ / How to install APK -->
+    <section class="faq-section">
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      
+      <div class="faq-container">
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How do I install the Shanto TV APK?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            Follow these simple steps:
+            <ol>
+              <li>Click the "Download Shanto TV APK" button above.</li>
+              <li>Wait for the download to complete and open the downloaded <code>.apk</code> file.</li>
+              <li>If you see an "Install Blocked" prompt, go to your Android device Settings > Security (or App Settings).</li>
+              <li>Enable installation of apps from "Unknown Sources".</li>
+              <li>Return to the installer and click "Install".</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Is Shanto TV safe to install?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            Yes, our application packages are thoroughly scanned for viruses, spyware, and malware before deployment. Since it is distributed directly as an APK and not through the Play Store, your device warns you by default when installing.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Are there any subscriptions or registration steps?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+          <div class="faq-answer">
+            No, Shanto TV does not charge any service fees. You do not need to register, verify an email address, or enter credit card information. The app is completely free.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#">Home</a>
+          <a href="#features">Features</a>
+          <a href="https://shanto.top" target="_blank">shanto.top</a>
+        </div>
+        <p class="copyright">&copy; 2026 Shanto TV. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Interactive category selection inside phone mockup
+    function selectCategory(sport, element) {
+      // Toggle active state in chips
+      const chips = document.querySelectorAll('.chip');
+      chips.forEach(chip => chip.classList.remove('active'));
+      element.classList.add('active');
+
+      // Filter matches
+      const cards = document.querySelectorAll('.match-card');
+      cards.forEach(card => {
+        if (sport === 'all') {
+          card.style.display = 'block';
+        } else {
+          if (card.getAttribute('data-sport') === sport) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // Toggle FAQ accordions
+    function toggleFaq(element) {
+      const parent = element.parentElement;
+      parent.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
