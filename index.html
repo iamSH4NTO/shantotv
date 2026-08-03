@@ -1041,13 +1041,21 @@
               <span class="meta-dot">&bull;</span>
               <span>DMG Package</span>
             </div>
-            <div style="margin-top: 12px; font-size: 0.78rem; color: #94a3b8; background: rgba(0, 191, 255, 0.04); padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(0, 191, 255, 0.15); line-height: 1.5;">
-              <div style="font-weight: 700; color: #00d2ff; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
-                <span>💡</span> <span>If macOS says "App is damaged":</span>
+            <!-- All-in-One 1-Line Terminal Installer -->
+            <div style="margin-top: 14px; background: rgba(0, 191, 255, 0.05); padding: 14px; border-radius: 12px; border: 1px solid rgba(0, 191, 255, 0.2); line-height: 1.5;">
+              <div style="font-weight: 700; color: #00d2ff; font-size: 0.82rem; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                <span>⚡</span> <span>1-Line Terminal Auto Download, Install, Fix &amp; Open (All-in-One):</span>
               </div>
-              <p style="margin: 0 0 6px 0; color: #cbd5e1;">Drag <strong>SHANTO TV</strong> into <strong>Applications</strong>, then run this <strong>All-in-One command</strong> in Terminal:</p>
-              <div style="background: rgba(0, 0, 0, 0.6); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(0, 210, 255, 0.25); font-family: monospace; font-size: 0.75rem; color: #00d2ff; word-break: break-all;">
-                xattr -cr /Applications/"SHANTO TV.app" && open /Applications/"SHANTO TV.app"
+              <p style="margin: 0 0 8px 0; font-size: 0.75rem; color: #cbd5e1;">Copy &amp; paste this single command in Terminal to automatically download, install, fix Gatekeeper, and launch <strong>SHANTO TV</strong>:</p>
+              
+              <div style="font-size: 0.72rem; color: #94a3b8; margin-bottom: 4px; font-weight: 600;">Apple Silicon M1/M2/M3/M4:</div>
+              <div style="background: rgba(0, 0, 0, 0.7); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(0, 210, 255, 0.25); font-family: monospace; font-size: 0.72rem; color: #00d2ff; word-break: break-all; margin-bottom: 8px; user-select: all;">
+                curl -sSL "https://github.com/iamSH4NTO/shantotv/raw/refs/heads/main/downloads/SHANTOtv-arm64.dmg" -o /tmp/SHANTOtv.dmg &amp;&amp; hdiutil attach /tmp/SHANTOtv.dmg -quiet &amp;&amp; cp -R /Volumes/"SHANTO TV"/"SHANTO TV.app" /Applications/ 2&gt;/dev/null; hdiutil detach /Volumes/"SHANTO TV" -quiet 2&gt;/dev/null; xattr -cr /Applications/"SHANTO TV.app" &amp;&amp; open /Applications/"SHANTO TV.app"
+              </div>
+
+              <div style="font-size: 0.72rem; color: #94a3b8; margin-bottom: 4px; font-weight: 600;">Intel Mac:</div>
+              <div style="background: rgba(0, 0, 0, 0.7); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(255, 123, 0, 0.25); font-family: monospace; font-size: 0.72rem; color: #ffae00; word-break: break-all; user-select: all;">
+                curl -sSL "https://github.com/iamSH4NTO/shantotv/raw/refs/heads/main/downloads/SHANTOtv.dmg" -o /tmp/SHANTOtv.dmg &amp;&amp; hdiutil attach /tmp/SHANTOtv.dmg -quiet &amp;&amp; cp -R /Volumes/"SHANTO TV"/"SHANTO TV.app" /Applications/ 2&gt;/dev/null; hdiutil detach /Volumes/"SHANTO TV" -quiet 2&gt;/dev/null; xattr -cr /Applications/"SHANTO TV.app" &amp;&amp; open /Applications/"SHANTO TV.app"
               </div>
             </div>
           </div>
