@@ -1045,11 +1045,10 @@
               <div style="font-weight: 700; color: #00d2ff; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
                 <span>💡</span> <span>If macOS says "App is damaged":</span>
               </div>
-              <ol style="margin: 0; padding-left: 18px; color: #cbd5e1; display: flex; flex-direction: column; gap: 4px;">
-                <li>Drag <strong>SHANTO TV</strong> into your <strong>Applications</strong> folder.</li>
-                <li>Fix damaged error in Terminal: <code style="color:#00d2ff; background:rgba(0,0,0,0.5); padding:2px 6px; border-radius:4px; font-family: monospace; font-size: 0.75rem;">xattr -cr /Applications/"SHANTO TV.app"</code></li>
-                <li>Launch the app: <code style="color:#10b981; background:rgba(0,0,0,0.5); padding:2px 6px; border-radius:4px; font-family: monospace; font-size: 0.75rem;">open /Applications/"SHANTO TV.app"</code></li>
-              </ol>
+              <p style="margin: 0 0 6px 0; color: #cbd5e1;">Drag <strong>SHANTO TV</strong> into <strong>Applications</strong>, then run this <strong>All-in-One command</strong> in Terminal:</p>
+              <div style="background: rgba(0, 0, 0, 0.6); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(0, 210, 255, 0.25); font-family: monospace; font-size: 0.75rem; color: #00d2ff; word-break: break-all;">
+                xattr -cr /Applications/"SHANTO TV.app" && open /Applications/"SHANTO TV.app"
+              </div>
             </div>
           </div>
 
