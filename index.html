@@ -1041,6 +1041,9 @@
               <span class="meta-dot">&bull;</span>
               <span>DMG Package</span>
             </div>
+            <div style="margin-top: 10px; font-size: 0.75rem; color: #94a3b8; background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+              💡 <strong>If macOS says "App is damaged":</strong> Run <code style="color:#00d2ff; background:rgba(0,0,0,0.4); padding:2px 6px; border-radius:4px;">xattr -cr /Applications/"SHANTO TV.app"</code> in Terminal.
+            </div>
           </div>
 
           <!-- Windows Downloads Panel -->
@@ -1217,7 +1220,8 @@
               <li>Download the <code>.dmg</code> package matching your processor type (Apple Silicon M1/M2/M3/M4 or Intel).</li>
               <li>Double-click the downloaded <code>.dmg</code> file to mount it.</li>
               <li>Drag the <strong>Shanto TV</strong> icon into your <code>Applications</code> folder.</li>
-              <li>If macOS Gatekeeper blocks opening, go to <strong>System Settings > Privacy & Security</strong> and click <strong>Open Anyway</strong>, or right-click the app icon and select <strong>Open</strong>.</li>
+              <li>If macOS shows <em>"SHANTO TV is damaged and can't be opened"</em> (macOS Gatekeeper warning for self-signed apps), open <strong>Terminal</strong> and run: <code style="color:#00d2ff; background:rgba(0,0,0,0.4); padding:2px 6px; border-radius:4px;">xattr -cr /Applications/"SHANTO TV.app"</code></li>
+              <li>Alternatively, go to <strong>System Settings &gt; Privacy &amp; Security</strong> and click <strong>Open Anyway</strong>.</li>
             </ol>
           </div>
         </div>
