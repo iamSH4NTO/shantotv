@@ -371,12 +371,93 @@
       color: rgba(255, 255, 255, 0.2);
     }
 
-    /* Phone Mockup Screen */
+    /* Mockup Container */
     .mockup-container {
       display: flex;
       justify-content: center;
       align-items: center;
       perspective: 1000px;
+    }
+
+    /* Desktop Window Mockup */
+    .desktop-mockup {
+      width: 100%;
+      max-width: 620px;
+      border-radius: 14px;
+      background: #090c14;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 50px rgba(0, 191, 255, 0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .desktop-mockup:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(255, 123, 0, 0.25);
+    }
+
+    .desktop-titlebar {
+      height: 38px;
+      background: #121622;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+    }
+
+    .window-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .control-dot.close { background: #ff5f56; }
+    .control-dot.minimize { background: #ffbd2e; }
+    .control-dot.maximize { background: #27c93f; }
+
+    .window-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+    }
+
+    .window-title img {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+    }
+
+    .window-spacer {
+      width: 52px;
+    }
+
+    .desktop-screen {
+      width: 100%;
+      background: #000;
+      line-height: 0;
+      overflow: hidden;
+    }
+
+    .desktop-screen img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
     }
 
     .phone-mockup {
@@ -1027,15 +1108,35 @@
         </div>
       </div>
 
-      <!-- Right Phone Mockup with app screenshot -->
+      <!-- Right App Preview Mockup -->
       <div class="mockup-container">
-        <div class="phone-mockup">
+        <!-- Desktop Window Mockup (Default for macOS, Windows, Linux) -->
+        <div class="desktop-mockup" id="mockup-desktop">
+          <div class="desktop-titlebar">
+            <div class="window-controls">
+              <span class="control-dot close"></span>
+              <span class="control-dot minimize"></span>
+              <span class="control-dot maximize"></span>
+            </div>
+            <div class="window-title">
+              <img src="asset/logo.jpg" alt="Logo">
+              <span>SHANTO TV DESKTOP PLAYER</span>
+            </div>
+            <div class="window-spacer"></div>
+          </div>
+          <div class="desktop-screen">
+            <img src="asset/desktop_app.png" alt="Shanto TV Desktop Player Preview">
+          </div>
+        </div>
+
+        <!-- Phone Mockup (Active for Android) -->
+        <div class="phone-mockup" id="mockup-phone" style="display: none;">
           <div class="phone-notch">
             <div class="phone-notch-dot"></div>
           </div>
           
           <div class="phone-screen" style="padding-top: 0;">
-            <img src="asset/app.jpeg" alt="Shanto TV App Screenshot" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="asset/app.jpeg" alt="Shanto TV Mobile App Screenshot" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
         </div>
       </div>
@@ -1211,6 +1312,17 @@
 
       if (activeTab) activeTab.classList.add('active');
       if (activePanel) activePanel.classList.add('active');
+
+      const mockupDesktop = document.getElementById('mockup-desktop');
+      const mockupPhone = document.getElementById('mockup-phone');
+
+      if (platform === 'android') {
+        if (mockupDesktop) mockupDesktop.style.display = 'none';
+        if (mockupPhone) mockupPhone.style.display = 'flex';
+      } else {
+        if (mockupDesktop) mockupDesktop.style.display = 'flex';
+        if (mockupPhone) mockupPhone.style.display = 'none';
+      }
     }
 
     // Auto OS detection
